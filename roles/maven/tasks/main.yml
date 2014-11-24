@@ -1,0 +1,23 @@
+---
+# Installs some versions of Maven
+
+- name: Create Maven-Base-Directory
+  file: state=directory path=/home/siggi/tools/maven
+
+- name: Download Maven 3.2.3
+  get_url: url=http://mirror.serversupportforum.de/apache/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz dest=/home/siggi/tools/maven/apache-maven-3.2.3-bin.tar.gz
+
+- name: Download Maven 3.1.1
+  get_url: url=http://mirror.serversupportforum.de/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz dest=/home/siggi/tools/maven/apache-maven-3.1.1-bin.tar.gz
+
+- name: Download Maven 3.0.5
+  get_url: url=http://mirror.serversupportforum.de/apache/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz dest=/home/siggi/tools/maven/apache-maven-3.0.5-bin.tar.gz
+
+- name: Extract Maven 3.2.3
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/maven/apache-maven-3.2.3-bin.tar.gz -C /home/siggi/tools/maven creates=/home/siggi/tools/maven/apache-maven-3.2.3
+
+- name: Extract Maven 3.1.1
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/maven/apache-maven-3.1.1-bin.tar.gz -C /home/siggi/tools/maven creates=/home/siggi/tools/maven/apache-maven-3.1.1
+
+- name: Extract Maven 3.0.5
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/maven/apache-maven-3.0.5-bin.tar.gz -C /home/siggi/tools/maven creates=/home/siggi/tools/maven/apache-maven-3.0.5

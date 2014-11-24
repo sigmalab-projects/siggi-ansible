@@ -1,0 +1,11 @@
+---
+# This playbook set up siggi-environment
+
+- hosts: vagrant
+  user: siggi
+
+  roles:
+   - maven
+   - ant
+   - gradle
+   - java

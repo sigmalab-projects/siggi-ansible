@@ -1,0 +1,40 @@
+---
+# Installs some versions of Java
+
+## JAVA 7
+- name: Create Java-Base-Directory
+  file: state=directory path=/home/siggi/tools/java
+
+- stat: path=/home/siggi/tools/java/jdk-7u65-linux-x64.tar.gz
+  register: jdk_7u65
+
+- name: Download JDK jdk-7u65-linux-x64.tar.gz
+  shell: curl -L --cookie "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.tar.gz -o /home/siggi/tools/java/jdk-7u65-linux-x64.tar.gz
+  when: jdk_7u65.stat.exists == False
+
+- name: Extract JDK jdk-7u65-linux-x64.tar.gz
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/java/jdk-7u65-linux-x64.tar.gz -C /home/siggi/tools/java creates=/home/siggi/tools/java/jdk1.7.0_65
+
+# http://download.oracle.com/otn-pub/java/jdk/7u72-b14/jdk-7u72-linux-x64.tar.gz
+
+## JAVA 8
+- stat: path=/home/siggi/tools/java/jdk-8u25-linux-x64.tar.gz
+  register: jdk_8u25
+
+- name: Download JDK jdk-8u25-linux-x64.tar.gz
+  shell: curl -L --cookie "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jdk-8u25-linux-x64.tar.gz -o /home/siggi/tools/java/jdk-8u25-linux-x64.tar.gz
+  when: jdk_8u25.stat.exists == False
+
+- name: Extract JDK jdk-8u25-linux-x64.tar.gz
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/java/jdk-8u25-linux-x64.tar.gz -C /home/siggi/tools/java creates=/home/siggi/tools/java/jdk1.8.0_25
+
+
+- stat: path=/home/siggi/tools/java/jdk-8u20-linux-x64.tar.gz
+  register: jdk_8u20
+
+- name: Download JDK jdk-8u20-linux-x64.tar.gz
+  shell: curl -L --cookie "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.tar.gz -o /home/siggi/tools/java/jdk-8u20-linux-x64.tar.gz
+  when: jdk_8u20.stat.exists == False
+
+- name: Extract JDK jdk-8u20-linux-x64.tar.gz
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/java/jdk-8u20-linux-x64.tar.gz -C /home/siggi/tools/java creates=/home/siggi/tools/java/jdk1.8.0_20

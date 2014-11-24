@@ -1,0 +1,29 @@
+---
+# Installs some versions of Gradle
+
+- name: Create Gradle-Base-Directory
+  file: state=directory path=/home/siggi/tools/gradle
+
+- name: Download Gradle 1.12
+  get_url: url=http://services.gradle.org/distributions/gradle-1.12-bin.zip dest=/home/siggi/tools/gradle/gradle-1.12-bin.zip
+
+- name: Download Gradle 2.0
+  get_url: url=http://services.gradle.org/distributions/gradle-2.0-bin.zip dest=/home/siggi/tools/gradle/gradle-2.0-bin.zip
+
+- name: Download Gradle 2.1
+  get_url: url=http://services.gradle.org/distributions/gradle-2.1-bin.zip dest=/home/siggi/tools/gradle/gradle-2.1-bin.zip
+
+- name: Download Gradle 2.2
+  get_url: url=http://services.gradle.org/distributions/gradle-2.2-bin.zip dest=/home/siggi/tools/gradle/gradle-2.2-bin.zip
+
+- name: Extract Gradle 1.12
+  unarchive: src=/home/siggi/tools/gradle/gradle-1.12-bin.zip dest=/home/siggi/tools/gradle copy=no
+
+- name: Extract Gradle 2.0
+  unarchive: src=/home/siggi/tools/gradle/gradle-2.0-bin.zip dest=/home/siggi/tools/gradle copy=no
+
+- name: Extract Gradle 2.1
+  unarchive: src=/home/siggi/tools/gradle/gradle-2.1-bin.zip dest=/home/siggi/tools/gradle copy=no
+
+- name: Extract Gradle 2.2
+  unarchive: src=/home/siggi/tools/gradle/gradle-2.2-bin.zip dest=/home/siggi/tools/gradle copy=no

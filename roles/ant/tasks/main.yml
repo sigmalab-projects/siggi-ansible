@@ -1,0 +1,17 @@
+---
+# Installs some versions of Ant
+
+- name: Create Ant-Base-Directory
+  file: state=directory path=/home/siggi/tools/ant
+
+- name: Download Ant 1.9.4
+  get_url: url=http://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz dest=/home/siggi/tools/ant/apache-ant-1.9.4-bin.tar.gz
+
+- name: Download Ant 1.8.4
+  get_url: url=http://archive.apache.org/dist/ant/binaries/apache-ant-1.8.4-bin.tar.gz dest=/home/siggi/tools/ant/apache-ant-1.8.4-bin.tar.gz
+
+- name: Extract Ant 1.9.4
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/ant/apache-ant-1.9.4-bin.tar.gz -C /home/siggi/tools/ant creates=/home/siggi/tools/ant/apache-ant-1.9.4
+
+- name: Extract Ant 1.8.4
+  command: chdir=/usr/share /bin/tar xvf /home/siggi/tools/ant/apache-ant-1.8.4-bin.tar.gz -C /home/siggi/tools/ant creates=/home/siggi/tools/ant/apache-ant-1.8.4
